@@ -1,5 +1,7 @@
 package ru.yandex.incoming34.KafkaTrial;
 
+import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -10,18 +12,25 @@ import java.util.logging.Logger;
 
 @EnableKafka
 @Component
-public class Producer {
+public class ProducerService {
 
     @Value("${spring.kafka.producer.topic}")
     String topic;
 
-    Logger logger = Logger.getLogger(String.valueOf(Producer.class));
+    Logger logger = Logger.getLogger(String.valueOf(ProducerService.class));
 
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
+    @Autowired
+    Producer producer;
+
     public void sendMessage(String msg) {
-        kafkaTemplate.send(topic, msg);
+        ProducerRecord<String, String> record = new ProducerRecord("topic", "key", msg);
+
+
+        producer.send(record);
+
     }
 
 }

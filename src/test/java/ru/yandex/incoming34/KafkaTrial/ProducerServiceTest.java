@@ -5,14 +5,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProducerTest {
+class ProducerServiceTest {
 
     @Autowired
-    Producer producer;
+    ProducerService producerService;
 
     @Test
     public void sendMessageTest(){
-        producer.sendMessage("Shalom!!!");
+        producerService.sendMessage("Привет с большого бодуна!!!");
     }
 
 }
