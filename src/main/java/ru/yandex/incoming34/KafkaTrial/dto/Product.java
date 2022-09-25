@@ -3,14 +3,13 @@ package ru.yandex.incoming34.KafkaTrial.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
-import org.springframework.stereotype.Component;
-
-import java.io.Serializable;
+import lombok.ToString;
 import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 @Getter
+@ToString
 public class Product {
 
     private final UUID id;
